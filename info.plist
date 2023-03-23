@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alfredapp.oss.mxbaylee</string>
+	<key>connections</key>
+	<dict>
+		<key>5C7A39E2-42F5-427C-A3E9-947F062A5B5F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8AB6A466-DFAC-4AA2-9C31-0C126B361BC2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>8AB6A466-DFAC-4AA2-9C31-0C126B361BC2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>067478DF-88A8-4A9A-912B-84244C251166</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A2D8264A-E886-4FEE-864A-9364DBFBFE5B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F1CF4615-56FA-4E33-9025-466F5E98CCFA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Mx Baylee</string>
+	<key>description</key>
+	<string>Just a playground for experimental workflows.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Email Generator</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>F1CF4615-56FA-4E33-9025-466F5E98CCFA</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>email</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string># query="$(echo '{query}' | sed -r 's/https{0,1}:\/\/(www.){0,1}//' | sed 's/\..*$//')"
+query=$(URL='{query}' python3 domain.py)
+
+small=$(openssl rand -hex 100 | head --bytes 6)
+med=$(openssl rand -hex 100 | head --bytes 10)
+large=$(openssl rand -hex 100 | head --bytes 15)
+
+echo -n '{"items": [{"title":"Small Size","subtitle":"'$query'.'${small}'@'${domain}'", "arg":"'$query'.'${small}'@'${domain}'"}, {"title":"Medium Size","subtitle":"'$query'.'${med}'@'${domain}'", "arg":"'$query'.'${med}'@'${domain}'"}, {"title":"Large Size","subtitle":"'$query'.'${large}'@'${domain}'", "arg":"'$query'.'${large}'@'${domain}'"}]}'</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>A2D8264A-E886-4FEE-864A-9364DBFBFE5B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>python3 test.py</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>8AB6A466-DFAC-4AA2-9C31-0C126B361BC2</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>.test.email</string>
+				<key>subtext</key>
+				<string>Run the tests for filtering domains, uri's and snippets to a memorable name.</string>
+				<key>text</key>
+				<string>Test Email</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>5C7A39E2-42F5-427C-A3E9-947F062A5B5F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alignment</key>
+				<integer>0</integer>
+				<key>backgroundcolor</key>
+				<string></string>
+				<key>fadespeed</key>
+				<integer>0</integer>
+				<key>fillmode</key>
+				<integer>0</integer>
+				<key>font</key>
+				<string></string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>largetypetext</key>
+				<string>{query}</string>
+				<key>textcolor</key>
+				<string></string>
+				<key>wrapat</key>
+				<integer>50</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>067478DF-88A8-4A9A-912B-84244C251166</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>## 💌 Email Generator
+
+This package is used to generate more unique email addresses for wildcard domains based on an input text and some random hashes.
+
+For example:
+
+&gt; email google.com
+
+Will give you 3 size email addresses:
+
+* google.3b0094@example.com
+* google.672667003b@example.com
+* google.6dc6da300a6526a@example.com
+
+You can pass in
+
+* Name of a website like `google`
+* Full or partial domains `calendar.google.com`
+* Full URL `https://docs.google.com/spreadsheets/d/1SAAAk0A_kO4CAAAp-rcpwlRC7AAAAq3qwrIldc/edit#gid=1940831276`</string>
+	<key>uidata</key>
+	<dict>
+		<key>067478DF-88A8-4A9A-912B-84244C251166</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>11</integer>
+			<key>xpos</key>
+			<real>480</real>
+			<key>ypos</key>
+			<real>325</real>
+		</dict>
+		<key>5C7A39E2-42F5-427C-A3E9-947F062A5B5F</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>11</integer>
+			<key>xpos</key>
+			<real>55</real>
+			<key>ypos</key>
+			<real>325</real>
+		</dict>
+		<key>8AB6A466-DFAC-4AA2-9C31-0C126B361BC2</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>11</integer>
+			<key>xpos</key>
+			<real>265</real>
+			<key>ypos</key>
+			<real>325</real>
+		</dict>
+		<key>A2D8264A-E886-4FEE-864A-9364DBFBFE5B</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>xpos</key>
+			<real>165</real>
+			<key>ypos</key>
+			<real>155</real>
+		</dict>
+		<key>F1CF4615-56FA-4E33-9025-466F5E98CCFA</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>xpos</key>
+			<real>375</real>
+			<key>ypos</key>
+			<real>155</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>example.com</string>
+				<key>placeholder</key>
+				<string>example.com</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>The domain used at the end of the email</string>
+			<key>label</key>
+			<string>🕸️ Domain</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>domain</string>
+		</dict>
+	</array>
+	<key>version</key>
+	<string>1.0.3</string>
+	<key>webaddress</key>
+	<string>https://github.com/mxbaylee</string>
+</dict>
+</plist>
