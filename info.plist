@@ -6,37 +6,24 @@
 	<string>com.alfredapp.oss.mxbaylee</string>
 	<key>connections</key>
 	<dict>
-		<key>5C7A39E2-42F5-427C-A3E9-947F062A5B5F</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>8AB6A466-DFAC-4AA2-9C31-0C126B361BC2</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>8AB6A466-DFAC-4AA2-9C31-0C126B361BC2</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>067478DF-88A8-4A9A-912B-84244C251166</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>A2D8264A-E886-4FEE-864A-9364DBFBFE5B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>F1CF4615-56FA-4E33-9025-466F5E98CCFA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F1CF4615-56FA-4E33-9025-466F5E98CCFA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>80220667-6FB2-4A35-9BA6-EA6768B6101B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -137,76 +124,76 @@ echo -n '{"items": [{"title":"Small Size","subtitle":"'$query'.'${small}'@'${dom
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
-				<integer>68</integer>
+				<integer>102</integer>
 				<key>script</key>
-				<string>python3 test.py</string>
+				<string># Based On "Alfred Emoji" workflow
+# https://github.com/jsumners/alfred-emoji
+
+# THESE VARIABLES MUST BE SET.
+readonly github_repo='mxbaylee/email-generator'
+readonly frequency_check='1' # days
+
+# FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
+readonly info_plist='info.plist'
+
+function abort {
+  echo "${1}" &gt;&amp;2
+  exit 1
+}
+
+function notification {
+  osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new version is available\""
+}
+
+function fetch_remote_version {
+  curl --silent "https://api.github.com/repos/${github_repo}/releases/latest" | grep 'tag_name' | head -1 | sed -E 's/.*tag_name": "v?(.*)".*/\1/'
+}
+
+function fetch_download_url {
+  curl --silent "https://api.github.com/repos/${github_repo}/releases/latest" | grep 'browser_download_url.*\.alfredworkflow"' | head -1 | sed -E 's/.*browser_download_url": "(.*)".*/\1/'
+}
+
+function download_and_install {
+  readonly tmpfile="$(mktemp).alfredworkflow"
+  notification 'Downloading and installing…'
+  curl --silent --location --output "${tmpfile}" "${1}"
+  open "${tmpfile}"
+}
+
+# Local sanity checks
+[[ -n "${alfred_workflow_version}" ]] || abort "'alfred_workflow_version' must be set."
+[[ -n "${alfred_workflow_name}" ]] || abort "'alfred_workflow_name' must be set."
+[[ "${github_repo}" =~ ^.+\/.+$ ]] || abort "'github_repo' (${github_repo}) must be in the format 'username/repo'."
+[[ "${frequency_check}" =~ ^[0-9]+$ ]] || abort "'frequency_check' (${frequency_check}) must be a number."
+
+# Check for updates
+if [[ $(find "${info_plist}" -mtime +"${frequency_check}"d) ]]; then
+  if [[ "${alfred_workflow_version}" == "$(fetch_remote_version)" ]]; then
+    touch "${info_plist}" # Reset timer by touching local file
+    exit 0
+  fi
+
+  download_and_install "$(fetch_download_url)"
+fi</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>5</integer>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>8AB6A466-DFAC-4AA2-9C31-0C126B361BC2</string>
+			<string>80220667-6FB2-4A35-9BA6-EA6768B6101B</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>.test.email</string>
-				<key>subtext</key>
-				<string>Run the tests for filtering domains, uri's and snippets to a memorable name.</string>
-				<key>text</key>
-				<string>Test Email</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>5C7A39E2-42F5-427C-A3E9-947F062A5B5F</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alignment</key>
-				<integer>0</integer>
-				<key>backgroundcolor</key>
-				<string></string>
-				<key>fadespeed</key>
-				<integer>0</integer>
-				<key>fillmode</key>
-				<integer>0</integer>
-				<key>font</key>
-				<string></string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>largetypetext</key>
-				<string>{query}</string>
-				<key>textcolor</key>
-				<string></string>
-				<key>wrapat</key>
-				<integer>50</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.largetype</string>
-			<key>uid</key>
-			<string>067478DF-88A8-4A9A-912B-84244C251166</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
 	</array>
 	<key>readme</key>
-	<string>## 💌 Email Generator
+	<string>![icon](./icon.png)
+
+## 💌 Email Generator
 
 This package is used to generate more unique email addresses for wildcard domains based on an input text and some random hashes.
 For example:
@@ -230,40 +217,29 @@ You can pass in
 * Download the latest [release](https://github.com/mxbaylee/email-generator/releases).
 * Be sure to set the `domain` value.
     * Click "Configure Workflow..."
-    * Update `domain` with your wildcard domain name.</string>
+    * Update `domain` with your wildcard domain name.
+
+
+## Todo
+
+Fixup tests to be in github workflows
+Add github workflow packager
+	* https://github.com/jsumners/alfred-emoji</string>
 	<key>uidata</key>
 	<dict>
-		<key>067478DF-88A8-4A9A-912B-84244C251166</key>
+		<key>80220667-6FB2-4A35-9BA6-EA6768B6101B</key>
 		<dict>
-			<key>colorindex</key>
-			<integer>11</integer>
+			<key>note</key>
+			<string>Auto Update - remove to disable</string>
 			<key>xpos</key>
-			<real>480</real>
+			<real>575</real>
 			<key>ypos</key>
-			<real>325</real>
-		</dict>
-		<key>5C7A39E2-42F5-427C-A3E9-947F062A5B5F</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>11</integer>
-			<key>xpos</key>
-			<real>55</real>
-			<key>ypos</key>
-			<real>325</real>
-		</dict>
-		<key>8AB6A466-DFAC-4AA2-9C31-0C126B361BC2</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>11</integer>
-			<key>xpos</key>
-			<real>265</real>
-			<key>ypos</key>
-			<real>325</real>
+			<real>155</real>
 		</dict>
 		<key>A2D8264A-E886-4FEE-864A-9364DBFBFE5B</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>4</integer>
+			<integer>11</integer>
 			<key>xpos</key>
 			<real>165</real>
 			<key>ypos</key>
@@ -272,7 +248,7 @@ You can pass in
 		<key>F1CF4615-56FA-4E33-9025-466F5E98CCFA</key>
 		<dict>
 			<key>colorindex</key>
-			<integer>4</integer>
+			<integer>11</integer>
 			<key>xpos</key>
 			<real>375</real>
 			<key>ypos</key>
