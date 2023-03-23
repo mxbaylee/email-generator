@@ -46,25 +46,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>F1CF4615-56FA-4E33-9025-466F5E98CCFA</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -115,6 +96,25 @@ echo -n '{"items": [{"title":"Small Size","subtitle":"'$query'.'${small}'@'${dom
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>A2D8264A-E886-4FEE-864A-9364DBFBFE5B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>F1CF4615-56FA-4E33-9025-466F5E98CCFA</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
@@ -217,14 +217,7 @@ You can pass in
 * Download the latest [release](https://github.com/mxbaylee/email-generator/releases).
 * Be sure to set the `domain` value.
     * Click "Configure Workflow..."
-    * Update `domain` with your wildcard domain name.
-
-
-## Todo
-
-Fixup tests to be in github workflows
-Add github workflow packager
-	* https://github.com/jsumners/alfred-emoji</string>
+    * Update `domain` with your wildcard domain name.</string>
 	<key>uidata</key>
 	<dict>
 		<key>80220667-6FB2-4A35-9BA6-EA6768B6101B</key>

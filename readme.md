@@ -1,3 +1,5 @@
+![icon](./icon.png)
+
 ## 💌 Email Generator
 
 This package is used to generate more unique email addresses for wildcard domains based on an input text and some random hashes.
