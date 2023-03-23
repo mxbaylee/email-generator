@@ -280,7 +280,7 @@ Add github workflow packager
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.0.3</string>
+	<string>1.0.4</string>
 	<key>webaddress</key>
 	<string>https://github.com/mxbaylee</string>
 </dict>
