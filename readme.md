@@ -13,6 +13,8 @@ Will give you 3 size email addresses:
 *  google.672667003b@example.com
 *  google.6dc6da300a6526a@example.com
 
+![screenshot](./screenshot.png)
+
 You can pass in
 
 * Name of a website like `google`
