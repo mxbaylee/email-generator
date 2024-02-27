@@ -6,11 +6,50 @@
 	<string>com.alfredapp.oss.mxbaylee</string>
 	<key>connections</key>
 	<dict>
+		<key>4FCD9AE1-8CAB-4BDA-B609-9430B2FB46B4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B9BA0E12-EE57-4A25-801A-229ABEA0FB44</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>A2D8264A-E886-4FEE-864A-9364DBFBFE5B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>F1CF4615-56FA-4E33-9025-466F5E98CCFA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B9BA0E12-EE57-4A25-801A-229ABEA0FB44</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A2D8264A-E886-4FEE-864A-9364DBFBFE5B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D0635879-B38D-43D8-B1C7-1965C37318A6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4FCD9AE1-8CAB-4BDA-B609-9430B2FB46B4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -36,7 +75,7 @@
 	<key>createdby</key>
 	<string>Mx Baylee</string>
 	<key>description</key>
-	<string>Just a playground for experimental workflows.</string>
+	<string>💌 Generate unique email addresses for wildcard domains.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -96,25 +135,6 @@ echo -n '{"items": [{"title":"Small Size","subtitle":"'$query'.'${small}'@'${dom
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>A2D8264A-E886-4FEE-864A-9364DBFBFE5B</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>F1CF4615-56FA-4E33-9025-466F5E98CCFA</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
@@ -189,14 +209,96 @@ fi</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>F1CF4615-56FA-4E33-9025-466F5E98CCFA</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>email</string>
+				<key>subtext</key>
+				<string>Detect URL from your browser.</string>
+				<key>text</key>
+				<string>Generate Email</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>D0635879-B38D-43D8-B1C7-1965C37318A6</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>tasksettings</key>
+				<dict/>
+				<key>taskuid</key>
+				<string>com.alfredapp.automation.extras/web-browsers/frontmost-browser/frontmost.tabs.current</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.automation.task</string>
+			<key>uid</key>
+			<string>4FCD9AE1-8CAB-4BDA-B609-9430B2FB46B4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>tasksettings</key>
+				<dict/>
+				<key>taskuid</key>
+				<string>com.alfredapp.automation.core/url-processing/url.hostname</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.automation.task</string>
+			<key>uid</key>
+			<string>B9BA0E12-EE57-4A25-801A-229ABEA0FB44</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>![icon](./icon.png)
 
 ## 💌 Email Generator
 
-This package is used to generate more unique email addresses for wildcard domains based on an input text and some random hashes.
-For example:
+This package is used to generate unique email addresses for wildcard domains based on an input text and some random hashes.
+
+### Automatically Detecting the URL
+
+Assuming the top most browser has the URL loaded, the plugin can detect it for you by actioning the base command.
+
+`&gt; email` &amp;&amp; `&lt;enter&gt;`
+
+This will pre-fill in the `Manually Entering the URL` action below
+
+![screenshot](./screenshot-automatic-1.png)
+![screenshot](./screenshot-automatic-2.png)
+
+### Manually Entering the URL
 
 `&gt; email google.com`
 
@@ -206,7 +308,7 @@ Will give you 3 size email addresses:
 *  google.672667003b@example.com
 *  google.6dc6da300a6526a@example.com
 
-![screenshot](./screenshot.png)
+![screenshot](./screenshot-manual.png)
 
 You can pass in
 
@@ -222,12 +324,19 @@ You can pass in
     * Update `domain` with your wildcard domain name.</string>
 	<key>uidata</key>
 	<dict>
+		<key>4FCD9AE1-8CAB-4BDA-B609-9430B2FB46B4</key>
+		<dict>
+			<key>xpos</key>
+			<real>240</real>
+			<key>ypos</key>
+			<real>375</real>
+		</dict>
 		<key>80220667-6FB2-4A35-9BA6-EA6768B6101B</key>
 		<dict>
 			<key>note</key>
 			<string>Auto Update - remove to disable</string>
 			<key>xpos</key>
-			<real>575</real>
+			<real>405</real>
 			<key>ypos</key>
 			<real>155</real>
 		</dict>
@@ -235,17 +344,35 @@ You can pass in
 		<dict>
 			<key>colorindex</key>
 			<integer>11</integer>
+			<key>note</key>
+			<string>Manually Enter</string>
 			<key>xpos</key>
-			<real>165</real>
+			<real>75</real>
 			<key>ypos</key>
 			<real>155</real>
 		</dict>
-		<key>F1CF4615-56FA-4E33-9025-466F5E98CCFA</key>
+		<key>B9BA0E12-EE57-4A25-801A-229ABEA0FB44</key>
+		<dict>
+			<key>xpos</key>
+			<real>405</real>
+			<key>ypos</key>
+			<real>375</real>
+		</dict>
+		<key>D0635879-B38D-43D8-B1C7-1965C37318A6</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>11</integer>
+			<key>note</key>
+			<string>Autodetect URL</string>
 			<key>xpos</key>
+			<real>70</real>
+			<key>ypos</key>
 			<real>375</real>
+		</dict>
+		<key>F1CF4615-56FA-4E33-9025-466F5E98CCFA</key>
+		<dict>
+			<key>xpos</key>
+			<real>240</real>
 			<key>ypos</key>
 			<real>155</real>
 		</dict>
@@ -275,8 +402,8 @@ You can pass in
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.0.4</string>
+	<string>1.1.0</string>
 	<key>webaddress</key>
-	<string>https://github.com/mxbaylee</string>
+	<string>https://github.com/mxbaylee/email-generator</string>
 </dict>
 </plist>

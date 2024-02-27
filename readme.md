@@ -2,8 +2,20 @@
 
 ## 💌 Email Generator
 
-This package is used to generate more unique email addresses for wildcard domains based on an input text and some random hashes.
-For example:
+This package is used to generate unique email addresses for wildcard domains based on an input text and some random hashes.
+
+### Automatically Detecting the URL
+
+Assuming the top most browser has the URL loaded, the plugin can detect it for you by actioning the base command.
+
+`> email` && `<enter>`
+
+This will pre-fill in the `Manually Entering the URL` action below
+
+![screenshot](./screenshot-automatic-1.png)
+![screenshot](./screenshot-automatic-2.png)
+
+### Manually Entering the URL
 
 `> email google.com`
 
@@ -13,7 +25,7 @@ Will give you 3 size email addresses:
 *  google.672667003b@example.com
 *  google.6dc6da300a6526a@example.com
 
-![screenshot](./screenshot.png)
+![screenshot](./screenshot-manual.png)
 
 You can pass in
 
